@@ -82,7 +82,7 @@ body{
 .container .content{
     width: 80%;
     max-width: 1000px;
-    min-height: 500px;
+    min-height: 375px;
     border: 2px dotted black;
     margin: 2rem auto;
     border-radius: 4px;
@@ -111,11 +111,12 @@ body{
 }
 
 .right .discount_percent{
-    font-size: 120px;
+    font-size: 102px;
     color: rgb(236, 11, 11);
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
     transform: skewX(-18deg);
     text-align: center;
+    margin-bottom: 13px;
 }
 
 .right .text{
@@ -219,7 +220,7 @@ body{
     height: 60%;
 }
 .left .images .badge{
-    align-self: flex-end;
+    align-self: flex-start;
 }
 .left .images .badge img{
     width: 100px;

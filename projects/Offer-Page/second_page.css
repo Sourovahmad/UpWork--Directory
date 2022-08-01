@@ -145,6 +145,10 @@ body{
     margin: auto;
 }
 
+.image_last{
+    width: 93% !important;
+}
+
 .left .features{
     display: flex;
     flex-direction: column;
@@ -185,10 +189,12 @@ body{
 }
 
 .right .product_name{
-    font-size: 90px;
-    transform: skewX(-10deg) skewY(-4deg);
+    font-size: 35px;
+    /* transform: skewX(-10deg) skewY(-4deg); */
     margin-top: -20px;
     color: green;
+    margin-top: 10px;
+    margin-bottom: 18px;
 }
 
 .right .about{
