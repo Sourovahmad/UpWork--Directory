@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\userRequest;
 use App\Imports\UsersImport;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,9 +39,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(userRequest $request)
     {
-        
         Excel::import(new UsersImport, $request->csv);
         return redirect()->route('home')->with('success', 'Users Imported Successfully');
     }
@@ -85,8 +85,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        if($request->id != 1){
+            User::findOrFail($request->user_id)->delete();
+        }
+        return redirect()->route('home')->with('success', 'Users Deleted Successfully');
     }
 }

@@ -41,6 +41,7 @@
                     <thead>
                       <tr>
                         <th scope="col">Name</th>
+                        <th scope="col">Reg No</th>
                         <th scope="col">Gender</th>
                         <th scope="col">Marital Status</th>
                         <th scope="col">Date of birth</th>
@@ -61,7 +62,7 @@
                         <th scope="row"> {{ $user->mangalik_status }}</th>
                         <th scope="row"> {{ $user->birth_date }}</th>
                         <th scope="row"> {{ $user->state }}</th>
-                        {{-- <th scope="row"> {{ $user->image_file }}</th> --}}
+                        <th scope="row"> <img src="{{ url('/images/'.$user->image_file) }}" alt="" style="height: 35px; width:40px"> </th>
                    
                         <td>
                           <button type="button" class="btn btn-sm btn-outline-success editButton" data-id="{{ $user->id }}"> edit </button>
@@ -132,10 +133,73 @@
       </div>
     </div>
 
+    {{-- form for delete user --}}
+    <form action="{{ route('delete_user') }}" method="POST" id="user_delete_hdiden_form" hidden>
+      @csrf
+      <input type="number" name="user_id" id="form_user_id">
+    </form>
+
+        
+    <!-- Modal -->
+    <div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+
+              @csrf
+              <div class="mb-3">
+                <label class="form-label" for="csv" class="form-label">CSV File</label>
+                <input class="form-control" id="csv" name="csv" type="file" accept=".csv, text/csv" />
+              </div>
+
+   
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </div>
+
+        </form>
+        </div>
+      </div>
+    </div>
+
   </main>
 
 
 
- 
+@endsection
 
+
+
+
+@section('script')
+
+  <script>
+     $(document).ready(function(){
+     
+        $('.deleteButton').on('click', function(){
+              if (confirm("Are You Sure!")) {
+                    const selectedId = $(this).attr('data-id');
+                    console.log(selectedId);
+                    elementFinder('form_user_id').value = selectedId;
+                    elementFinder('user_delete_hdiden_form').submit();
+
+              } else {
+                $(this).preventDefault();
+              }
+
+        });
+
+
+        function elementFinder(id){
+            return document.getElementById(id);
+        }
+     });
+  </script>
 @endsection
