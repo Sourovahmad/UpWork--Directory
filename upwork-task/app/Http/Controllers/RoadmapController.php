@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\roadmap;
 use App\Http\Requests\StoreroadmapRequest;
 use App\Http\Requests\UpdateroadmapRequest;
-use App\Models\faq;
 use App\Models\phaseItem;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoadmapController extends Controller
@@ -18,8 +18,8 @@ class RoadmapController extends Controller
      */
     public function index()
     {
-        $roadmaps = roadmap::with('items')->orderBy('id', 'DESC')->paginate(10);
-        return view('admin.roadmap', compact('roadmaps'));
+        $users = User::orderBy('id', 'desc')->get();
+        return $users;
     }
 
     /**

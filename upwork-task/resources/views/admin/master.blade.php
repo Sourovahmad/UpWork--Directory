@@ -79,30 +79,15 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('home') }}">
-
-             <i class="bi bi-person"></i>
-          <span>RoadMap</span>
-
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('faq') }}">
           <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('todo') }}">
-          <i class="bi bi-question-circle"></i>
-          <span>Todo</span>
+          <span>Users</span>
         </a>
       </li>
     </ul>
 
   </aside><!-- End Sidebar-->
 
-  @include('livewire.add_modals');
+
 
   <!-- End #main --> 
 @yield('content')
@@ -111,10 +96,10 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span> Rhino </span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span> sourov </span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://www.sarlex.org/">Sarlex Technologies</a>
+      Designed by <a href="https://github.com/sourovahmad">Sourov</a>
     </div>
   </footer>
 

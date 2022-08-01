@@ -1,10 +1,6 @@
 <?php
 
-use App\Http\Controllers\FaqController;
-use App\Http\Controllers\RoadmapController;
-
-use App\Http\Controllers\TodoController;
-use App\Http\Livewire\Roadmaps;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('/', [RoadmapController::class, 'index'])->name('home');
-   
-
-
+    Route::get('/',[UserController::class, 'index'])->name('home');
+    Route::post('import_csv', [UserController::class, 'store'])->name('import_csv');
 });
