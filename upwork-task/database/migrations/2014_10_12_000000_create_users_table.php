@@ -27,10 +27,54 @@ class CreateUsersTable extends Migration
             $table->string('marital_status');
             $table->string('mangalik_status');
             $table->string('birth_date');
-            $table->string('state');
+            $table->string('state')->nullable();
             $table->longText('image_file');
 
+            $table->string('payment');
+            $table->string('facebook')->nullable();
+            $table->string('insta')->nullable();
+            $table->string('mobile_no');
+            $table->string('address');
+            $table->string('father_name');
+            $table->string('father_occuption');
 
+            $table->string('mother_name');
+            $table->string('mother_occuption');
+
+
+            $table->string('month')->nullable();
+            $table->string('year')->nullable();
+        
+            $table->string('time');
+
+            $table->string('birth_city');
+
+
+            $table->string('height');
+            $table->string('complexion');
+            $table->string('occupation');
+            $table->string('income');
+            $table->string('education_qualification');
+            $table->string('drinking');
+            $table->string('eating');
+            $table->string('weight');
+            $table->string('smoker');
+            $table->string('relation');
+            
+            $table->string('number');
+            $table->string('rname');
+            $table->string('bussiness_and_company_name');
+            $table->string('family_gotra');
+            
+            $table->string('working_city');
+            $table->string('min_income')->nullable();
+            $table->string('rashi');
+            $table->string('preference');
+
+            $table->string('additional');
+            $table->string('brothers');
+            $table->string('sisters');
+            $table->string('designation');
 
 
             $table->rememberToken();
