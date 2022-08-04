@@ -55,8 +55,14 @@
               <h6>{{ auth()->user()->name }}</h6>
             </li>
 
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                 <i class="bi bi-box-arrow-right"></i>
+                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
                 <span>Sign Out</span>
               </a>
             </li>

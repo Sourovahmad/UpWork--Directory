@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'mangalik_status' => 'no',
             'birth_date' => '25/01/2002',
             'state' => 'sylhet',
-            'image_file' => public_path('images/profile/sourov_profile.png'),
+            'image_file' => "user_1.png",
 
             'payment' => 'TRUE',
             'facebook' => 'facebook.com',
