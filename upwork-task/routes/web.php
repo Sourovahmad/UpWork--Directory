@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\indexController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\ensureUserisSuperadmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +20,24 @@ use Illuminate\Support\Facades\Route;
 //     return view('auth.register');
 // })->name('register');
 
+
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('/',[UserController::class, 'index'])->name('home');
-    Route::post('import_csv', [UserController::class, 'store'])->name('import_csv');
-    Route::post('delete_user', [UserController::class, 'destroy'])->name('delete_user');
+
+    // User Routes
+
+    Route::get('/', [indexController::class, 'index'])->name('home');
+
+
+    // Admin Routes
+    Route::middleware(ensureUserisSuperadmin::class)->group(function () {
+
+        Route::get('/admin',[UserController::class, 'index'])->name('admin_home');
+        Route::post('import_csv', [UserController::class, 'store'])->name('import_csv');
+        Route::post('delete_user', [UserController::class, 'destroy'])->name('delete_user');
+
+    });
+
+
     
 });

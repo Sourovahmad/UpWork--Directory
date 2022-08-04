@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\userRequest;
-use App\Imports\UsersImport;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
-class UserController extends Controller
+class indexController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'desc')->paginate(10);
-        return view('admin.users',[
-            'users' => $users
-        ]);
+        return view('users.index');
     }
 
     /**
@@ -39,10 +32,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(userRequest $request)
+    public function store(Request $request)
     {
-        Excel::import(new UsersImport, $request->csv);
-        return redirect()->route('admin_home')->with('success', 'Users Imported Successfully');
+        //
     }
 
     /**
@@ -85,15 +77,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-        ]);
-
-        if($request->id != 1){
-            User::findOrFail($request->user_id)->delete();
-        }
-        return redirect()->route('admin_home')->with('success', 'Users Deleted Successfully');
+        //
     }
 }
