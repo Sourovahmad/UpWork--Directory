@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/', [indexController::class, 'index'])->name('home');
     Route::get('filter',[indexController::class,'filter'])->name('filterData');
+    Route::get('filterName',[indexController::class,'filter_name'])->name('filterName');
 
 
     // Admin Routes

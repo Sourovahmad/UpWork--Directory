@@ -156,25 +156,7 @@
 
 
                         <div class="card-header bg-transparent">
-                            <form class="form-inline">
-
-
-                                <div class="input-group w-100">
-                                    <input type="text" name="message" id="message" placeholder="Enter Name To Search" class="form-control form-control-md">
-
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-camera"></i>
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-
-                            </form>
-
+                          
                         </div>
 
                   @forelse ($users as $user)
@@ -364,6 +346,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+       
 
 </body>
 </html>
