@@ -27,6 +27,12 @@ class indexController extends Controller
         ]);
     }
 
+
+    public function filter(Request $request)
+    {
+       return $request;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

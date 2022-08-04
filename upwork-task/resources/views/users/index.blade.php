@@ -15,7 +15,7 @@
 
     <!------------------LIght BOx for Gallery-------------->
 
-    <title>Find Them</title>
+    <title>Find Your Perfect</title>
 </head>
 <body>
 
@@ -102,6 +102,18 @@
 
 
 
+                        </div>
+
+
+                        <div class="text-center mb-3">
+                            <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" class="btn btn-outline-info card-link btn-sm">Logout</a>
+
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                         </div>
 
                     </div>
@@ -268,109 +280,57 @@
 
                     <div class="card shadow-sm mb-4">
                         <div class="card-body">
-                            <h6 class="card-title">Sponsored</h6>
-                            <img src="img/right1.jpg" alt="card-img" class="card-img mb-3">
-                            <p class="card-text text-justify"> <span class="h6">It might be time to visit Iceland.</span> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
-                            <a href="#" class="btn btn-outline-info card-link btn-sm">Buy a ticket</a>
+                            <h6 class="card-title">Filter</h6>
+                            
+                            <form action="{{ route('filterData') }}" method="GET">
 
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="card shadow-sm mb-4">
-
-                        <div class="card-body">
-
-                            <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a> </h6>
-                            <div class="row no-gutters d-none d-lg-flex">
-                                <div class="col-6 p-1">
-                                    <img src="img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
-                                    <img src="img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
-
-
-
-                                </div>
-                                <div class="col-6 p-1 text-left">
-                                    <h6>Jacob Thornton @fat</h6>
-                                    <a href="#" class="btn btn-outline-info btn-sm mb-3"><i class="fas fa-user-friends"></i>Follow </a>
-
-                                    <h6>Mark otto</h6>
-                                    <a href="#" class="btn btn-outline-info  btn-sm"><i class="fas fa-user-friends"></i>Follow </a>
-
+                                <div class="mb-2">
+                                    <label for="uploadTime" class="form-label">Upload Time</label>
+                                    <select class="form-control" id="uploadTime" name="upload_time">
+                                        <option value="">Select </option>
+                                        <option value="this_week">This Week</option>
+                                        <option value="all">All Time</option>
+                                      </select>
                                 </div>
 
-                            </div>
-
-                        </div>
-
-                        <div class="card-footer">
-
-                            <p class="lead" style="font-size:18px;">Dave really likes these nerds, no one knows why though.</p>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <p>&copy; 2018 Bootstrap
+                                <div class="mb-2">
+                                    <label for="uploadTime" class="form-label">Mangalik</label>
+                                    <select class="form-control" id="uploadTime" name="mangalik">
+                                        <option value="">Select </option>
+                                        <option value="non_mangalik">Non Mangalik</option>
+                                        <option value="anshik">Anshik</option>
+                                        <option value="dont_know">Dont Know</option>
+                                      </select>
+                                </div>
 
 
 
-                                <a href="#">About</a>
-                                <a href="#">Help</a>
-                                <a href="#">Terms</a>
-                                <a href="#">Privacy</a>
-                                <a href="#">Cookies</a>
-                                <a href="#">Ads </a>
-                                <a href="#">Info</a>
-                                <a href="#">Brand</a>
-                                <a href="#">Blog</a>
-                                <a href="#">Status</a>
-                                <a href="#">Apps</a>
-                                <a href="#">Jobs</a>
-                                <a href="#">Advertise</a>
+                                
+                                <div class="mb-2">
+                                    <label for="uploadTime" class="form-label">Born</label>
+                                    <select class="form-control" id="uploadTime" name="born">
+                                        <option value="">Select </option>
+                                        <option value="before_1985">Before 1985</option>
+                                        <option value="1985_1995">1985-1995</option>
+                                        <option value="after_1995">After 1995</option>
+                                      </select>
+                                </div>
 
 
 
+                                <div class="text-center m-2">
+                                    <button class="btn btn-outline-success card-link btn-sm" type="submit">Apply</button>
+                                </div>
+                             
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                            </p>
+                            </form>
                         </div>
 
                     </div>
-
-
-
-
-
-
-
 
 
                 </div>
-
-
-
-
-
-
-
 
 
             </div>
