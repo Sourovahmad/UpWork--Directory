@@ -177,7 +177,7 @@
 
                         </div>
 
-                  @foreach ($users as $user)
+                  @forelse ($users as $user)
                       
 
                         <div class="card-body">
@@ -211,7 +211,18 @@
                         </div>
                     </div>
 
-                @endforeach
+                    @empty
+
+
+                    <div class="card-body w-100">
+                        <div class="media">
+                            <div class="text-cente">
+                                <h4> No Data Available</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforelse
 
 
 
