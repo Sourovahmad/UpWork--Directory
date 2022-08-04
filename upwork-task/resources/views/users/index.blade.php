@@ -243,7 +243,7 @@
                 </div>
 
 
-                <nav aria-label="Page navigation example" style="float: right">
+                {{-- <nav aria-label="Page navigation example" style="float: right">
                     <ul class="pagination">
                         @if($users->onFirstPage())
                         <li class="page-item disabled"> <a class="page-link" >Previous</a></li>
@@ -258,7 +258,7 @@
                         @endif
     
                     </ul>
-                </nav>
+                </nav> --}}
     
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class indexController extends Controller
 {
@@ -18,9 +19,9 @@ class indexController extends Controller
         $current_user = auth()->user();
         $users = null;
         if($current_user->gender == 'Boy'){
-            $users = User::where('gender', 'Girl')->paginate(10);
+            $users = User::where('gender', 'Girl')->get();
         }else{
-            $users = User::where('gender', 'Boy')->paginate(10);
+            $users = User::where('gender', 'Boy')->get();
         }
 
         return view('users.index',[
@@ -95,30 +96,33 @@ class indexController extends Controller
        }
 
 
-
-
-
-       // Remove duplicates 
-       $firstArray = null;
-       if(!is_null($upload_times_data)){
-            $firstArray = $upload_times_data;
-       }elseif(!is_null($mangalik_data)){
-            $firstArray = $$mangalik_data;
-       }elseif(!is_null($born_data)){
-         $firstArray = $born_data;
-       }else{
-        return redirect()->route('home');
-       }
-
-       $allUsers = [];
-       foreach($firstArray as $single){
-        
-       }
-
-
        // merge into 1 array 
 
+       $mergedArray = [];
+       if(!is_null($upload_times_data)){
+        foreach ($upload_times_data as $single_upload) {
+           array_push($mergedArray, $single_upload);
+        }
+     }
+
+
+    if(!is_null($mangalik_data)){
+        foreach ($mangalik_data as $single_mangalik) {
+            array_push($mergedArray, $single_mangalik);
+         }
+    }
+    
+    if(!is_null($born_data)){
+        foreach ($born_data as $single_born) {
+            array_push($mergedArray, $single_born);
+         }
+    }
+
+    $users_uniq = array_unique($mergedArray);
        // pass to index as $users
+       return view('users.index',[
+        'users' => $users_uniq
+    ]);
     }
 
     /**
