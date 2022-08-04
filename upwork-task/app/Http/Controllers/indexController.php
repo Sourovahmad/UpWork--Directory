@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class indexController extends Controller
@@ -13,7 +14,17 @@ class indexController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $current_user = auth()->user();
+        $users = null;
+        if($current_user->gender == 'Boy'){
+            $users = User::where('gender', 'Girl')->paginate(10);
+        }else{
+            $users = User::where('gender', 'Boy')->paginate(10);
+        }
+
+        return view('users.index',[
+            'users' => $users
+        ]);
     }
 
     /**

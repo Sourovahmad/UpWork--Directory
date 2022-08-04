@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'super admin',
             'email' => 'superadmin@gmail.com',
             'password' => bcrypt(11223344),
-            'gender' => 'male',
+            'gender' => 'Boy',
             'marital_status' => 'unmarried',
             'mangalik_status' => 'no',
             'birth_date' => '25/01/2002',

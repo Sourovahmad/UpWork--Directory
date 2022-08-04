@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 
-<!------------------LIght BOx for Gallery-------------->
-<link rel="stylesheet" href="{{ asset('css/lightBox.min.css') }}">
-<script type="text/javascript" src="{{ asset('js/lightBox.js') }}"></script>
+    <!------------------LIght BOx for Gallery-------------->
+    <link rel="stylesheet" href="{{ asset('css/lightBox.min.css') }}">
+    <script type="text/javascript" src="{{ asset('js/lightBox.js') }}"></script>
 
-<!------------------LIght BOx for Gallery-------------->
+    <!------------------LIght BOx for Gallery-------------->
 
-<title>User System </title>
+    <title>Find Them</title>
 </head>
 <body>
 
-    
+
     <!-------------------------------NAvigation Starts------------------>
 
     <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
@@ -30,7 +31,7 @@
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
                 <li class="nav-item"><a href="index.html" class="nav-link active">home</a></li>
-                {{-- 
+                {{--
                 <li class="nav-item"><a href="profile.html" class="nav-link">profile</a></li>
                 <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">messages</a></li>
                 <li class="nav-item"><a href="notification.html" class="nav-link">docs</a></li>
@@ -42,7 +43,7 @@
             <form action="" class="form-inline ml-auto d-none d-md-block">
                 <input type="text" name="search" id="search" placeholder="Search" class="form-control form-control-sm">
             </form>
-            <a href="{{ route('home') }}" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
+            <a href="{{ route('home') }}" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a>
             <img src="{{ asset('images/'.auth()->user()->image_file) }}" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px">
 
         </div>
@@ -54,11 +55,11 @@
 
 
 
-    
+
     <!-------------------------------------------Start Grids layout for lg-xl-3 columns and (xs-lg 1 columns)--------------------------------->
 
 
- <div class="container">
+    <div class="container">
         <div class="row">
 
 
@@ -69,16 +70,12 @@
                 <div class="left-column">
 
 
-                    <div class="card card-left1 mb-4" >
-                        <img src="img/photo-1455448972184-de647495d428.jpg" alt="" class="card-img-top img-fluid">
+                    <div class="card card-left1 mb-4">
                         <div class="card-body text-center ">
-                            <img src="img/avatar-dhg.png" alt="img" width="120px" height="120px" class="rounded-circle mt-n5">
-                            <h5 class="card-title">Dave Gamache</h5>
-                            <p class="card-text text-justify mb-2">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
-                            <ul class="list-unstyled nav justify-content-center">
-                               <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Friends <br> <strong>12M</strong></li></a>
-                              <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Enimes <br> <strong>1</strong></li></a> 
-                            </ul>
+                            <img src="{{ asset('images/'.auth()->user()->image_file) }}" alt="img" width="120px" height="120px" class="rounded-circle mt-n5">
+                            <h5 class="card-title">{{ auth()->user()->name }}</h5>
+                            <p class="card-text text-justify mb-2">{{ auth()->user()->address }}</p>
+
 
                         </div>
 
@@ -92,70 +89,22 @@
 
                         <div class="card-body">
 
-                                <h5 class="mb-3 card-title">About <small><a href="#" class="ml-1">Edit</a></small></h5>
+                            <h5 class="mb-3 card-title">About </h5>
 
-                                <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i> Went to <a href="#" class="text-decoration-none">oh canada</a></p>
+                            {{-- <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i> Went to  <a href="#" class="text-decoration-none">{{ auth()->user()->address }} </a></p> --}}
 
-                                <p class="card-text"> <i class="fas fa-user-friends mr-2"></i> Become a friend with <a href="#" class="text-decoration-none">obama</a></p>
-                                <p class="card-text"> <i class="far fa-building mr-2"></i> Work at <a href="#" class="text-decoration-none">Github</a></p>
-                                <p class="card-text"> <i class="fas fa-home mr-2"></i> Live in <a href="#" class="text-decoration-none">San francisco</a></p>
-                                <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> From <a href="#" class="text-decoration-none">Seattle, WA</a></p>
+                            <p class="card-text"> <i class="far fa-building mr-2"></i> Work at <a href="#" class="text-decoration-none">{{ auth()->user()->bussiness_and_company_name }}</a></p>
+                            <p class="card-text"> <i class="fas fa-home mr-2"></i> Live in <a href="#" class="text-decoration-none">{{ auth()->user()->address }}</a></p>
+                            <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> Designation <a href="#" class="text-decoration-none">{{ auth()->user()->designation }}</a></p>
+                            <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> Gender <a href="#" class="text-decoration-none">{{ auth()->user()->gender }}</a></p>
+                            <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> Marital Status <a href="#" class="text-decoration-none">{{ auth()->user()->marital_status }}</a></p>
 
 
 
 
                         </div>
-                     
-
-
-
 
                     </div>
-
-
-
-
-                    <div class="card shadow-sm card-left3 mb-4">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Photos<small class="ml-2"><a href="#">.Edit </a></small></h5>
-
-                            <div class="row">
-                                <div class="col-6 p-1">
-                                    <a href="img/left1.jpg" data-lightbox="id" ><img src="img/left1.jpg" alt="img" class="img-fluid my-2"></a>  
-                                    <a href="img/left2.jpg"data-lightbox="id"><img src="img/left2.jpg" alt="img" class="img-fluid my-2"></a>
-                                    <a href="img/left3.jpg"data-lightbox="id"><img src="img/left3.jpg" alt="img" class="img-fluid my-2"></a>
-
-                                </div>
-
-
-                                <div class="col-6 p-1">
-                                        <a href="img/left4.jpg"data-lightbox="id"><img src="img/left4.jpg" alt="img" class="img-fluid my-2"></a>
-                                        <a href="img/left5.jpg"data-lightbox="id"><img src="img/left5.jpg" alt="img" class="img-fluid my-2"></a>
-                                        <a href="img/left6.jpg"data-lightbox="id"><img src="img/left6.jpg" alt="img" class="img-fluid my-2"></a>
-    
-                                    </div>
-
-                            </div>
-
-                        </div>
-
-
-
-
-
-
-
-                        </div>
-
-
-
-
-                   
-
-                    
-
-
 
 
 
@@ -174,24 +123,24 @@
 
 
 
- <!--------------------------Ends Left columns-->
+            <!--------------------------Ends Left columns-->
 
 
 
 
 
- <!---------------------------------------Middle columns  start---------------->
+            <!---------------------------------------Middle columns  start---------------->
 
 
 
-            
-            <div class="col-12 col-lg-6" >
+
+            <div class="col-12 col-lg-6" style="height: 100vh; overflow-y:scroll;">
 
 
                 <div class="middle-column">
 
 
-                    <div class="card" >
+                    <div class="card">
 
 
                         <div class="card-header bg-transparent">
@@ -199,313 +148,239 @@
 
 
                                 <div class="input-group w-100">
-                                 <input type="text" name="message" id="message" placeholder="Message" class="form-control form-control-md">
+                                    <input type="text" name="message" id="message" placeholder="Enter Name To Search" class="form-control form-control-md">
 
-                                 <div class="input-group-append">
+                                    <div class="input-group-append">
                                         <div class="input-group-text">
-                                                <i class="fas fa-camera"></i>
-                                            </div>
+                                            <i class="fas fa-camera"></i>
+                                        </div>
 
 
-                                 </div>
+                                    </div>
 
                                 </div>
 
 
-
-                        
-                                
-                               
                             </form>
 
                         </div>
 
+                  @foreach ($users as $user)
+                      
+
+                        <div class="card-body">
+                            <div class="media">
+
+                                <div class="container mb-2 p-2 d-flex justify-content-center">
+                                    <div class="card_user_profile p-4">
+                                       <div class="user_card_image d-flex flex-column justify-content-center align-items-center">
+                                          <button class="btn_user_card btn-secondary"> 
+                                            {{-- <img src="{{ asset('images/'.$user->image_file) }}" height="100" width="100" /> --}}
+                                            <img src="{{ asset('images/user_1.png') }}" height="100" width="100" style="border-radius: 45px" />
+                                            </button> <span class="name mt-3">{{ $user->name }}</span> 
+                                            
+                                          {{-- <div class="d-flex mt-2"> <button class="btn1 btn-dark">View Profile</button> </div> --}}
+
+
+                                          <div class="text mt-3"> <span>{{ $user->name }} Pena is a {{ $user->designation }} of  {{ $user->bussiness_and_company_name }}<br><br> Located At {{ $user->address }} </span> </div>
+
+                                          <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+
+                                            <a href="{{ $user->facebook }}"><span class="m-2 p-2"><i class="fa fa-facebook-f"></i></span> </a>
+                                             <a href="{{ $user->insta }}"><span class="m-2 p-2"><i class="fa fa-instagram"></i></span> </a>
+                                            </div>
+
+                                       </div>
+                                    </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
 
 
 
 
-
-                           
-   <div class="card-body">
-
-    <div class="media">
-        <img src="img/avatar-dhg.png" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
-
-        <div class="media-body">
-            <h5>Dave Gamache</h5>
-            <p class="card-text text-justify">Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-
-           
-
-            <div class="row no-gutters mb-3">
-                <div class="col-6 p-1 text-center">
-
-                        <img src="img/adventure-alps-clouds-2259810.jpg" alt="" class="img-fluid mb-2">
-                        <img src="img/aerial-view-architectural-design-buildings-2228123.jpg" alt="" class="img-fluid">
-            
-
-                </div>
-
-                <div class="col-6 p-1 text-center">
-
-                        <img src="img/celebration-colored-smoke-dark-2297472.jpg" alt="" class="img-fluid mb-2">
-                        <img src="img/bodybuilding-exercise-fitness-2294361.jpg" alt=""class="img-fluid">
-            
-
-                </div>
-
-
-            </div>
+                    <hr>
 
 
 
-
-
-
-
-
-        
-            <div class="media mb-3">
-                    <img src="img/avatar-dhg.png" alt="img" width="45px" height="45px" class="rounded-circle mr-2">
-                    <div class="media-body">
-                            <p class="card-text text-justify">Jacon Thornton: Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
+      
 
                     </div>
 
 
-            </div>
-
-            
-            <div class="media">
-                    <img src="img/avatar-mdo.png" alt="img" width="45px" height="45px" class="rounded-circle mr-2">
-                    <div class="media-body">
-                            <p class="card-text text-justify">Mark Otto: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-
-                    </div>
-
-
-            </div>
-
-            
-            
 
 
 
-        </div>
-        <small>5min</small>
-        
+
+                </div>
 
 
-    </div>
-
-
+                <nav aria-label="Page navigation example" style="float: right">
+                    <ul class="pagination">
+                        @if($users->onFirstPage())
+                        <li class="page-item disabled"> <a class="page-link" >Previous</a></li>
+                        @else
+                        <li class="page-item"> <a class="page-link" href="{{ $users->previousPageUrl() }}" >Previous</a></li>
+                        @endif
+    
+                        @if ($users->hasMorePages())
+                            <li class="page-item"> <a class="page-link" href="{{ $users->nextPageUrl() }}">Next</a></li>
+                        @else
+                            <li class="page-item disabled"> <a class="page-link">Next</a></li>
+                        @endif
+    
+                    </ul>
+                </nav>
     
 
 
 
-   </div>
-
-                            
-                             
- <hr>
-
-<div class="card-body">
-
-    <div class="media">
-            <img src="img/avatar-fat.jpg" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
-
-        <div class="media-body">
-                <h5>Jacob Thornton</h5>
-                <p class="text-justify">Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                    Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-
-
-        </div>
-
-        <small>14 min</small>
-
-    </div>
-
-
-
-
-
-</div>
-<hr>
-
-<div class="card-body">
-
-    <div class="media">
-
-            <img src="img/avatar-mdo.png" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
-            <div class="media-body">
-                <h5>Mark Otto</h5>
-                <p class="text-justify">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-             <a href="img/mid5.jpg" data-lightbox="id"><img src="img/mid5.jpg" alt="" class="img-fluid shadow-sm img-thumbnail">   </a>   
-
             </div>
 
 
-            <small class="text-muted">10 min</small>
 
 
 
-    </div>
+            <br> <br> <br><br> <br> <br>
 
+            <!------------------------Middle column Ends---------------->
 
 
 
-</div>
 
 
 
 
 
-                     
-                           
+            <!---------------------------Statrs Right Columns----------------->
 
- </div>
 
 
+            <div class="col-12 col-lg-3">
 
 
+                <div class="right-column">
 
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title">Sponsored</h6>
+                            <img src="img/right1.jpg" alt="card-img" class="card-img mb-3">
+                            <p class="card-text text-justify"> <span class="h6">It might be time to visit Iceland.</span> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+                            <a href="#" class="btn btn-outline-info card-link btn-sm">Buy a ticket</a>
 
-
-
-
- </div>
-
-
-
-
-
-
-
-
-  </div>
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  <br> <br> <br><br> <br> <br>
-
-<!------------------------Middle column Ends---------------->
-
-
-
-
-
-
-
-
-<!---------------------------Statrs Right Columns----------------->
-
-
-                
-<div class="col-12 col-lg-3">
-
-
-    <div class="right-column">
-
-        <div class="card shadow-sm mb-4" >
-            <div class="card-body">
-                <h6 class="card-title">Sponsored</h6>
-                <img src="img/right1.jpg" alt="card-img" class="card-img mb-3">
-                <p class="card-text text-justify"> <span class="h6">It might be time to visit Iceland.</span> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice.  What are you waiting for?</p>
-                <a href="#" class="btn btn-outline-info card-link btn-sm">Buy a ticket</a>
-
-
-            </div>
-
-        </div>
-
-
-        <div class="card shadow-sm mb-4">
-
-            <div class="card-body">
-
-                    <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a> </h6>
-                    <div class="row no-gutters d-none d-lg-flex">
-                        <div class="col-6 p-1">
-                                <img src="img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
-                                <img src="img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
-
-
-
-                        </div>
-                        <div class="col-6 p-1 text-left">
-                            <h6>Jacob Thornton @fat</h6>
-                            <a href="#" class="btn btn-outline-info btn-sm mb-3"><i class="fas fa-user-friends"></i>Follow </a>
-
-                            <h6>Mark otto</h6>
-                            <a href="#" class="btn btn-outline-info  btn-sm"><i class="fas fa-user-friends"></i>Follow </a>
 
                         </div>
 
                     </div>
 
+
+                    <div class="card shadow-sm mb-4">
+
+                        <div class="card-body">
+
+                            <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a> </h6>
+                            <div class="row no-gutters d-none d-lg-flex">
+                                <div class="col-6 p-1">
+                                    <img src="img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
+                                    <img src="img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
+
+
+
+                                </div>
+                                <div class="col-6 p-1 text-left">
+                                    <h6>Jacob Thornton @fat</h6>
+                                    <a href="#" class="btn btn-outline-info btn-sm mb-3"><i class="fas fa-user-friends"></i>Follow </a>
+
+                                    <h6>Mark otto</h6>
+                                    <a href="#" class="btn btn-outline-info  btn-sm"><i class="fas fa-user-friends"></i>Follow </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+
+                            <p class="lead" style="font-size:18px;">Dave really likes these nerds, no one knows why though.</p>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p>&copy; 2018 Bootstrap
+
+
+
+                                <a href="#">About</a>
+                                <a href="#">Help</a>
+                                <a href="#">Terms</a>
+                                <a href="#">Privacy</a>
+                                <a href="#">Cookies</a>
+                                <a href="#">Ads </a>
+                                <a href="#">Info</a>
+                                <a href="#">Brand</a>
+                                <a href="#">Blog</a>
+                                <a href="#">Status</a>
+                                <a href="#">Apps</a>
+                                <a href="#">Jobs</a>
+                                <a href="#">Advertise</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
             </div>
 
-            <div class="card-footer">
 
-                <p class="lead" style="font-size:18px;">Dave really likes these nerds, no one knows why though.</p>
-            </div>
-            
+
 
 
         </div>
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <p>&copy; 2018 Bootstrap
-
-
-
-                        <a href="#">About</a>
-                        <a href="#">Help</a>
-                        <a href="#">Terms</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Cookies</a>
-                        <a href="#">Ads </a>
-                        <a href="#">Info</a>
-                        <a href="#">Brand</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Status</a>
-                        <a href="#">Apps</a>
-                        <a href="#">Jobs</a>
-                        <a href="#">Advertise</a>
-                    
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                </p>
-            </div>
-
-        </div>
 
 
 
@@ -515,36 +390,9 @@
 
 
 
-    </div>
-
-    
-    
-
-
-
-
-
-
-            </div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
