@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -202,17 +203,44 @@ class indexController extends Controller
 
     public function login(Request $request)
     {
-        $user = User::where([
-            'email' => $request->email, 
-            'password' => $request->password
-        ])->first();
-        
-        if($user)
-        {
-            Auth::login($user);
-            return redirect()->route('home');
+        $setting = setting::find(1);
+
+
+        if($request->email == 'superadmin@gmail.com'){
+            $user = User::where([
+                'email' => $request->email, 
+                'password' => $request->password
+            ])->first();
+            
+            if($user)
+            {
+                Auth::login($user);
+                return redirect()->route('home');
+            }else{
+                return redirect()->route('login')->withErrors('Credentials Does Not Match');
+            }
+
         }else{
-            return redirect()->route('login')->withErrors('Credentials Does Not Match');
+            if($setting->online_status == false){
+                return redirect()->route('login')->withErrors('Website Currently Offline');
+            }else{
+            $user = User::where([
+                'email' => $request->email, 
+                'password' => $request->password
+            ])->first();
+            
+            if($user)
+            {
+                Auth::login($user);
+                return redirect()->route('home');
+            }else{
+                return redirect()->route('login')->withErrors('Credentials Does Not Match');
+            }
         }
-    }
+
+        }
+
+
+ 
+}
 }

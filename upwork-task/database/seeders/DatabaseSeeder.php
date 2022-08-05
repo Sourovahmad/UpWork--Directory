@@ -64,5 +64,10 @@ class DatabaseSeeder extends Seeder
             'sisters' => '3',
             'designation' => 'CEO',
         ]);
+
+
+        DB::table('settings')->insert([
+            'online_status' => true,
+        ]);
     }
 }

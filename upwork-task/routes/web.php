@@ -3,6 +3,7 @@
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ensureUserisSuperadmin;
+use App\Http\Middleware\ensureWebsiteActive;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 // })->name('register');
 
 
+
+
 Route::post('login_post', [indexController::class,'login'])->name('login_post');
 
 
@@ -29,14 +32,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // User Routes
 
-    Route::get('/auth-redirect', function ()
-    {
-        return "hello user";
-    })->name('auth-redirect');
 
-    Route::get('/', [indexController::class, 'index'])->name('home');
-    Route::get('filter',[indexController::class,'filter'])->name('filterData');
-    Route::get('filterName',[indexController::class,'filter_name'])->name('filterName');
+    // Route::middleware(ensureWebsiteActive::class)->group(function () {
+
+        Route::get('/', [indexController::class, 'index'])->name('home');
+        Route::get('filter',[indexController::class,'filter'])->name('filterData');
+        Route::get('filterName',[indexController::class,'filter_name'])->name('filterName');
+
+    // });
 
 
     // Admin Routes
@@ -48,6 +51,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     });
 
-
     
 });
+
