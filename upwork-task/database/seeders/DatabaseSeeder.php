@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'reg_no' => '1215',
             'name' => 'super admin',
             'email' => 'superadmin@gmail.com',
-            'password' => bcrypt(11223344),
+            'password' => 11223344,
             'gender' => 'Boy',
             'marital_status' => 'unmarried',
             'mangalik_status' => 'no',

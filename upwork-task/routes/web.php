@@ -21,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 // })->name('register');
 
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::post('login_post', [indexController::class,'login'])->name('login_post');
 
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
 
     // User Routes
 

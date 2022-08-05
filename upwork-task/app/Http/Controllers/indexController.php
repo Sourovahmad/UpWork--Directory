@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 
 class indexController extends Controller
 {
@@ -191,5 +192,23 @@ class indexController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public function login(Request $request)
+    {
+        $user = User::where([
+            'email' => $request->email, 
+            'password' => $request->password
+        ])->first();
+        
+        if($user)
+        {
+            Auth::login($user);
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('login')->withErrors('Credentials Does Not Match');
+        }
     }
 }

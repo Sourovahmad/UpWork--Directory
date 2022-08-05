@@ -42,11 +42,12 @@
                       <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Reg No</th>
+                        <th scope="col">Password</th>
                         <th scope="col">Gender</th>
                         <th scope="col">Marital Status</th>
-                        <th scope="col">Date of birth</th>
+                        <th scope="col">Mangalik Staus</th>
                         <th scope="col">State</th>
-                        <th scope="col">Date of birth</th>
+                        <th scope="col">birth Year</th>
                         <th scope="col">image</th>
                         <th scope="col">Action</th>
 
@@ -57,11 +58,12 @@
                       <tr>
                         <th scope="row"> {{ $user->name }}</th>
                         <th scope="row"> {{ $user->reg_no }}</th>
+                        <th scope="row"> {{ $user->password }}</th>
                         <th scope="row"> {{ $user->gender }}</th>
                         <th scope="row"> {{ $user->marital_status }}</th>
                         <th scope="row"> {{ $user->mangalik_status }}</th>
-                        <th scope="row"> {{ $user->birth_date }}</th>
                         <th scope="row"> {{ $user->state }}</th>
+                        <th scope="row"> {{ $user->year }}</th>
                         <th scope="row"> <img src="{{ url('/images/'.$user->image_file) }}" alt="" style="height: 35px; width:40px"> </th>
                    
                         <td>

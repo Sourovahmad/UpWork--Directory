@@ -76,7 +76,7 @@
   </header>
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+  {{-- <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -91,7 +91,9 @@
       </li>
     </ul>
 
-  </aside><!-- End Sidebar-->
+  </aside> --}}
+  
+  <!-- End Sidebar-->
 
 
 
