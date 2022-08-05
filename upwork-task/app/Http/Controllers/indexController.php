@@ -17,7 +17,11 @@ class indexController extends Controller
      */
     public function index()
     {
+        
         $current_user = auth()->user();
+        if($current_user->id == 1){
+            return redirect()->route('admin_home');
+        }
         $users = null;
         if($current_user->gender == 'Boy'){
             $users = User::where('gender', 'Girl')->get();
