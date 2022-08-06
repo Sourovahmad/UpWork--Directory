@@ -1,0 +1,21 @@
+.wrap_chat_images_process{
+    background: rgba(0, 0, 0, 0.85);
+}
+.wrap_chat_images_process .chat_images_process img{
+    max-width: 100%;
+    max-height: 320px;
+}
+.close_audio{
+    vertical-align: top;
+    margin-top: 9px;
+}
+.chat_audio audio{
+    margin-top: 3px;
+    height: 42px;
+}
+.chat_area audio{
+    height: 42px;
+}
+.chat_area img{
+    max-width: 200px;
+}

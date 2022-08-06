@@ -6,6 +6,7 @@
     <div class="pagetitle d-flex justify-content-between">
       <h1>Users</h1>
       <button type="button" class="btn btn-sm btn-success btn-lg me-4 ps-3 pe-3" data-bs-toggle="modal" data-bs-target="#add_modal"> Add </button>
+      <button type="button" class="btn btn-sm btn-success btn-lg me-4 ps-3 pe-3" data-bs-toggle="modal" data-bs-target="#add_modal"> Setting </button>
     </div>
 
     <section class="section dashboard">

@@ -1,0 +1,149 @@
+.wrap_container{
+    min-height: 600px;
+    padding-bottom: 50px;
+}
+.logo{
+    width: 130px;
+    margin-top: 20px;
+}
+.wrap_slider{
+    height: 700px;
+    overflow: hidden;
+}
+
+.wrap_social{
+
+}
+.wrap_social a{
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 50%;
+    border: 1px solid #FFF;
+    background: #1cac00;
+    color: #FFF;
+    display: inline-block;
+    text-align: center;
+    margin-left: 8px; 
+}
+
+.owl-nav{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.owl-carousel .owl-stage-outer{
+    top: 60px;
+}
+.owl-nav button span{
+    background: #FFF;
+    color: #1cac00;
+    border: 1px solid #1cac00;
+    border-radius: 5px;
+    display: block;
+    width: 36px;
+    font-size: 30px;
+    font-weight: 900;
+    height: 38px;
+    line-height: 31px;
+}
+
+body.offcanvas-active{
+    overflow:hidden;
+}
+
+.offcanvas-header{ display:none; }
+
+.screen-darken{
+    height: 100%; width:0%;
+    z-index: 3000;
+    position: fixed; top: 0; right: 0; 
+    opacity:0; visibility:hidden;
+    background-color: rgba(34, 34, 34, 0.6);
+    transition:opacity .2s linear, visibility 0.2s, width 2s ease-in;
+}
+
+.screen-darken.active{
+    z-index:1030; 
+    transition:opacity .3s ease, width 0s;
+    opacity:1;
+    width:100%;
+    visibility:visible;
+}
+.list_menu_chat span{
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+}
+.fs-7{
+    font-size: 13px;
+}
+/* ============ mobile view ============ */
+@media all and (max-width: 991px) {
+
+    .offcanvas-header{ display:block; }
+
+    .mobile-offcanvas{
+        visibility: hidden;
+        transform:translateX(-100%);
+        border-radius:0; 
+        display:block;
+        position: fixed;  top: 0; left:0;
+        height: 100%; width:80%;
+        z-index: 1200; 
+        overflow-y: scroll;
+        overflow-x: hidden;
+        transition: visibility .3s ease-in-out, transform .3s ease-in-out;
+    }
+
+    .mobile-offcanvas.show{
+        visibility: visible; 	transform: translateX(0);
+    }
+    .mobile-offcanvas .container, .mobile-offcanvas .container-fluid{
+        display: block;
+    }
+
+}	
+/* ============ mobile view .end// ============ */
+
+.text-gold{
+    color: #e8d003;
+}
+.rate_stars i{
+    cursor: pointer;
+}
+
+.wrap_stars_1 i:nth-child(1){ 
+    color: #e8d003;
+}
+
+.wrap_stars_2 i:nth-child(1) , .wrap_stars_2 i:nth-child(2) { 
+    color: #e8d003;
+}
+
+.wrap_stars_3 i:nth-child(1) , .wrap_stars_3 i:nth-child(2) , .wrap_stars_3 i:nth-child(3) { 
+    color: #e8d003;
+}
+
+.wrap_stars_4 i:nth-child(1) , .wrap_stars_4 i:nth-child(2) , .wrap_stars_4 i:nth-child(3) , .wrap_stars_4 i:nth-child(4) { 
+    color: #e8d003;
+}
+
+.wrap_stars_5 i:nth-child(1) , .wrap_stars_5 i:nth-child(2) , .wrap_stars_5 i:nth-child(3) , .wrap_stars_5 i:nth-child(4)  , .wrap_stars_5 i:nth-child(5) { 
+    color: #e8d003;
+}
+
+.bg-green-middle{
+    background: #d4ffcc !important ;
+}
+.details_booking{
+    display: none;
+}
+
+    .owl-carousel .owl-nav.disabled{
+        display: block !important;
+    }
