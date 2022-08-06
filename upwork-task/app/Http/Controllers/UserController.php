@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\userRequest;
 use App\Imports\UsersImport;
+use App\Models\setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+
+use function GuzzleHttp\Promise\settle;
 
 class UserController extends Controller
 {
@@ -18,8 +21,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
+        $setting = setting::find(1);
         return view('admin.users',[
-            'users' => $users
+            'users' => $users,
+            'setting' => $setting
         ]);
     }
 
@@ -95,5 +100,20 @@ class UserController extends Controller
             User::findOrFail($request->user_id)->delete();
         }
         return redirect()->route('admin_home')->with('success', 'Users Deleted Successfully');
+    }
+
+
+    public function change_status(Request $request)
+    {
+        $setting  = setting::find(1);
+       if(!is_null($request->status)){
+            $setting->online_status = true;
+            $setting->save();
+            return redirect()->route('admin_home')->with('success', 'Website update Successfully');
+       }else{
+        $setting->online_status = false;
+        $setting->save();
+        return redirect()->route('admin_home')->with('success', 'Website update Successfully');
+       }
     }
 }

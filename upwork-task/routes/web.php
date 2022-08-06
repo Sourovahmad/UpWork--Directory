@@ -48,6 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/admin',[UserController::class, 'index'])->name('admin_home');
         Route::post('import_csv', [UserController::class, 'store'])->name('import_csv');
         Route::post('delete_user', [UserController::class, 'destroy'])->name('delete_user');
+        Route::post('change_status',[UserController::class,'change_status'])->name('change_status');
 
     });
 

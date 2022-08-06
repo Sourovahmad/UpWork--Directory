@@ -115,7 +115,7 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   @yield('script')
 
 
