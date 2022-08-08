@@ -169,8 +169,8 @@
                                     <div class="card_user_profile p-4">
                                        <div class="user_card_image d-flex flex-column justify-content-center align-items-center">
                                           <button class="btn_user_card btn-secondary"> 
-                                            {{-- <img src="{{ asset('images/'.$user->image_file) }}" height="100" width="100" /> --}}
-                                            <img src="{{ asset('images/user_1.png') }}" height="100" width="100" style="border-radius: 45px" />
+                                            <img src="{{ asset('images/'.$user->image_file) }}" height="100" width="100" style="border-radius: 45px" />
+                                            {{-- <img src="{{ asset('images/user_1.png') }}" height="100" width="100" style="border-radius: 45px" /> --}}
                                             </button> <span class="name mt-3">{{ $user->name }}</span> 
                                             
                                           {{-- <div class="d-flex mt-2"> <button class="btn1 btn-dark">View Profile</button> </div> --}}
