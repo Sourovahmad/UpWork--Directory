@@ -8,6 +8,7 @@ use App\Models\setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 
 use function GuzzleHttp\Promise\settle;
 
@@ -115,5 +116,32 @@ class UserController extends Controller
         $setting->save();
         return redirect()->route('admin_home')->with('success', 'Website update Successfully');
        }
+    }
+
+    public function import_image(Request $request)
+    {
+        $request->validate([
+            'file' => 'required'
+        ]);
+
+        $file = $request->file;
+        $extension = $file->getClientOriginalExtension();
+
+
+      if($extension == 'zip'){
+
+        $path = $file->getPathName();
+        $zip = new ZipArchive();
+
+        if($zip->open($path) === true){
+        $folder = public_path('/images');
+        $zip->extractTo($folder);
+        $zip->close();
+
+        }
+        return redirect()->route('admin_home')->with('success', 'Images Uploaded Successfully');
+      }else{
+        return redirect()->route('admin_home')->with('error', 'Zip File Supported Only');
+      } 
     }
 }
