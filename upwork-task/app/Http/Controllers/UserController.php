@@ -21,8 +21,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'desc')->paginate(10);
+        $users = User::orderBy('id', 'desc')->get();
         $setting = setting::find(1);
+
+        foreach ($users as  $user) {
+            $user['pss_forsetting'] = $user->password;
+        }
+
         return view('admin.users',[
             'users' => $users,
             'setting' => $setting
@@ -80,9 +85,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'reg_no' => 'required',
+            'password' => 'required'
+        ]);
+
+        $user = User::findOrFail($request->user_id);
+        $prev_reg = $user->reg_no;
+
+        $user->update($request->except('user_id'));
+
+    
+
+        return redirect()->route('admin_home')->withSuccess("User has been updated");
+
     }
 
     /**

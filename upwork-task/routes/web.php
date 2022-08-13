@@ -51,6 +51,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('delete_user', [UserController::class, 'destroy'])->name('delete_user');
         Route::post('change_status',[UserController::class,'change_status'])->name('change_status');
 
+        Route::post('update_user',[UserController::class,'update'])->name('update_user');
+
+
+
     });
 
     
