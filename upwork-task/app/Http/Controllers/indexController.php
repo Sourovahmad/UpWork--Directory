@@ -29,9 +29,10 @@ class indexController extends Controller
         }else{
             $users = User::where('gender', 'Boy')->get();
         }
-
+        $search_mode = false;
         return view('users.index',[
-            'users' => $users
+            'users' => $users,
+            'search_mode' => $search_mode
         ]);
     }
 
@@ -45,6 +46,8 @@ class indexController extends Controller
        $upload_times_data = null;
        $mangalik_data = null;
        $born_data = null;
+
+       
 
 
        if(!is_null($request->upload_time)){
@@ -125,9 +128,11 @@ class indexController extends Controller
     }
 
     $users_uniq = array_unique($mergedArray);
+    $search_mode = true;
        // pass to index as $users
        return view('users.index',[
-        'users' => $users_uniq
+        'users' => $users_uniq,
+        'search_mode' => $search_mode
     ]);
     }
 

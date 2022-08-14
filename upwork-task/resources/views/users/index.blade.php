@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.5/viewer.css" integrity="sha512-c7kgo7PyRiLnl7mPdTDaH0dUhJMpij4aXRMOHmXaFCu96jInpKc8sZ2U6lby3+mOpLSSlAndRtH6dIonO9qVEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 
     <!------------------LIght BOx for Gallery-------------->
@@ -112,7 +114,7 @@
                     <div class="card">
 
 
-                        <div class="card-header bg-transparent">
+                        <div class="card-header bg-transparent" id="fullcontainer">
                           
                         </div>
 
@@ -126,13 +128,12 @@
                                     <div class="card_user_profile p-4">
                                        <div class="user_card_image d-flex flex-column justify-content-center align-items-center">
                                           <button class="btn_user_card btn-secondary"> 
-                                            <img src="{{ asset('images/'.$user->image_file) }}" height="100" width="100" style="border-radius: 45px" />
-                                            {{-- <img src="{{ asset('images/user_1.png') }}" height="100" width="100" style="border-radius: 45px" /> --}}
+                                            <img class="user_images" src="{{ asset('images/'.$user->image_file) }}" height="100" width="100"/>
+                                            
                                             </button> <span class="name mt-3">{{ $user->name }}</span> 
                                             
-                                          {{-- <div class="d-flex mt-2"> <button class="btn1 btn-dark">View Profile</button> </div> --}}
-
-
+                                      
+                                          @if($search_mode == false)
                                           <div class="text mt-3"> <span>{{ $user->name }} Pena is a {{ $user->designation }} of  {{ $user->bussiness_and_company_name }}<br><br> Located At {{ $user->address }} </span> </div>
 
                                           <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
@@ -140,6 +141,9 @@
                                             <a href="{{ $user->facebook }}"><span class="m-2 p-2"><i class="fa fa-facebook-f"></i></span> </a>
                                              <a href="{{ $user->insta }}"><span class="m-2 p-2"><i class="fa fa-instagram"></i></span> </a>
                                             </div>
+                                          @endif
+
+                                     
 
                                        </div>
                                     </div>
@@ -369,7 +373,21 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.5/viewer.min.js" integrity="sha512-i5q29evO2Z4FHGCO+d5VLrwgre/l+vaud5qsVqQbPXvHmD9obORDrPIGFpP2+ep+HY+z41kAmVFRHqQAjSROmA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     
 
+        <script>
+            window.onload = function(){
+
+                const images = document.querySelectorAll('img');
+                images.forEach(element => {
+                    const gallery =  new Viewer(element);
+                });
+               
+
+
+            }
+        </script>
 
        
 
