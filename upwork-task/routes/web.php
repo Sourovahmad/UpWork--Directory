@@ -32,14 +32,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // User Routes
 
-
-    // Route::middleware(ensureWebsiteActive::class)->group(function () {
-
         Route::get('/', [indexController::class, 'index'])->name('home');
         Route::get('filter',[indexController::class,'filter'])->name('filterData');
         Route::get('filterName',[indexController::class,'filter_name'])->name('filterName');
+        Route::post('change_password', [indexController::class,'change_password'])->name('change_password');
 
-    // });
 
 
     // Admin Routes

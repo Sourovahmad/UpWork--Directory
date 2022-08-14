@@ -37,7 +37,9 @@
             <li class="nav-item dropdown" style="cursor: pointer">
                 <a class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user text-light"></i> Profile </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
-                    <a class="dropdown-item" href="#">Change Password</a>
+                    
+                    <a class="dropdown-item" data-toggle="modal" data-target="#password_modal" >Change Password</a>
+
                     <a class="dropdown-item" href="{{ route('logout') }}"   onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Log out</a>
                     
@@ -61,6 +63,19 @@
 
 
 
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{ $error }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endforeach
 
 
     <!-------------------------------------------Start Grids layout for lg-xl-3 columns and (xs-lg 1 columns)--------------------------------->
@@ -280,6 +295,72 @@
 
 
 
+        {{-- --------------------- Modals ----------------- --}}
+        <div class="modal fade" id="password_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 
+
+                    <form action="{{ route('change_password') }}" method="POST">
+                        @csrf
+                    
+                    <div class="row">
+                  
+                    <div class="col-12">
+                          
+                    <div class="mb-3">
+      
+                              <div class="form-group">
+                                  <label for="prev"> Previous Password </label>
+                                  <input type="text" class="form-control" name="prev"  id="prev" required>
+                              </div>
+                          
+                          </div>
+      
+                    </div>
+                </div>
+                 
+
+                <div class="row">  
+                 <div class="col-md-6 col-sm-12">
+
+                    <input type="text" name="user_id" value="{{ auth()->user()->id }}" hidden required>
+                    
+                    <div class="form-group">
+                        <label for="password">  Password </label>
+                        <input type="text" class="form-control" name="password"  id="password" required>
+                    </div>
+                 </div>
+
+
+                 
+                 <div class="col-md-6 col-sm-12">
+                    
+                    <div class="form-group">
+                        <label for="password_confirmation"> Confirm Password  </label>
+                        <input type="text" class="form-control" name="password_confirmation"  id="password_confirmation" required>
+                    </div>
+                 </div>
+
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">update</button>
+
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 

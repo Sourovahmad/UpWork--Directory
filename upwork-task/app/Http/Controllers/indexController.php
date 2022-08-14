@@ -243,4 +243,30 @@ class indexController extends Controller
 
  
 }
+
+    public function change_password(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'prev' => 'required',
+            'password' => 'required|min:4|max:25|confirmed'
+        ]);
+
+        if(auth()->user()->id == $request->user_id){
+            if(auth()->user()->password == $request->prev){
+                $user = User::find(auth()->user()->id);
+                $user->password = $request->password;
+                $user->save();
+                return redirect()->route('home')->withSuccess('Password Has been Saved');
+            }else{
+                return redirect()->route('home')->withErrors('Password Does Not Match');
+            }
+        }else{
+           return redirect()->route('home')->withErrors('You are not autherized for it');
+        }
+
+    }
+
+
+
 }
