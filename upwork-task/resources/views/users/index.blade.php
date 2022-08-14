@@ -29,7 +29,7 @@
 
 
 <nav class="mb-4 navbar navbar-expand-lg navbar-dark bg-dark cyan">
-    <a class="navbar-brand font-bold text-light">Your Website Title</a>
+    <a class="navbar-brand font-bold text-light"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -272,6 +272,25 @@
 
 
 
+                                
+                                
+                                <div class="mb-2">
+                                    <label for="state" class="form-label">State</label>
+                                    <select class="form-control" id="state" name="state">
+                                        <option value="">Select </option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="UP">UP</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="MP">MP</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                      </select>
+                                </div>
+
+
+
+
                                 <div class="text-center m-2">
                                     <button class="btn btn-outline-success card-link btn-sm" type="submit">Apply</button>
                                 </div>
@@ -381,7 +400,9 @@
 
                 const images = document.querySelectorAll('img');
                 images.forEach(element => {
-                    const gallery =  new Viewer(element);
+                    const gallery =  new Viewer(element,{
+                        toolbar:false
+                    });
                 });
                
 

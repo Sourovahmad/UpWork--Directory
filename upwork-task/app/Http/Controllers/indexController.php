@@ -46,6 +46,7 @@ class indexController extends Controller
        $upload_times_data = null;
        $mangalik_data = null;
        $born_data = null;
+       $state_data = null;
 
        
 
@@ -54,10 +55,12 @@ class indexController extends Controller
 
             if($request->upload_time == 'this_week'){
                 $upload_times_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('created_at', '>', now()->subDays(7)->endOfDay())->get();
             }elseif($request->upload_time == 'all'){
                 $upload_times_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)->get();
             }
        }
@@ -66,15 +69,18 @@ class indexController extends Controller
        if(!is_null($request->mangalik)){
             if($request->mangalik == 'non_mangalik'){
                 $mangalik_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('mangalik_status', 'Non Mangalik')->get();
             } elseif($request->mangalik == 'anshik'){
                 $mangalik_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('mangalik_status', 'Anshik Mangalik')->get();
 
             } elseif($request->mangalik == 'dont_know'){
                 $mangalik_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('mangalik_status', "Don't Know Mangal Status")->get();
             }
@@ -86,11 +92,13 @@ class indexController extends Controller
 
             if($request->born == 'before_1985'){
                 $born_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('year', '<=', '1985')->get();
 
             }elseif($request->born == '1985_1995'){
                 $born_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('year', '>=', '1985')
                 ->where('year', '<=', '1995')
@@ -98,11 +106,26 @@ class indexController extends Controller
 
             }elseif($request->born == 'after_1995'){
                 $born_data = User::
+                where('id', '!=', 1)->
                 where('gender', $gender)
                 ->where('year', '>=', '1995')->get();
             }
 
        }
+
+
+
+       
+       if(!is_null($request->state)){
+            $state_data = User::
+            where('id', '!=', 1)->
+            where('gender', $gender)
+            ->where('state', $request->state)->get();
+        }
+
+
+
+
 
 
        // merge into 1 array 
@@ -124,6 +147,14 @@ class indexController extends Controller
     if(!is_null($born_data)){
         foreach ($born_data as $single_born) {
             array_push($mergedArray, $single_born);
+         }
+    }
+
+
+        
+    if(!is_null($state_data)){
+        foreach ($state_data as $single_state) {
+            array_push($mergedArray, $single_state);
          }
     }
 

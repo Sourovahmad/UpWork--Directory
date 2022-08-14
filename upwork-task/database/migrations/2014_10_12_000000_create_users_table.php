@@ -61,7 +61,7 @@ class CreateUsersTable extends Migration
             $table->string('smoker');
             $table->string('relation');
             
-            $table->string('number');
+            $table->string('rnumber');
             $table->string('rname');
             $table->string('bussiness_and_company_name');
             $table->string('family_gotra');
@@ -71,7 +71,7 @@ class CreateUsersTable extends Migration
             $table->string('rashi');
             $table->string('preference');
 
-            $table->string('additional');
+            $table->longText('additional');
             $table->string('brothers');
             $table->string('sisters');
             $table->string('designation');

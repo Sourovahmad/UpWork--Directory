@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'weight' => '70kg',
             'smoker' => 'no',
             'relation' => 'friend',
-            'number' => '123456',
+            'rnumber' => '123456',
             'rname' => 'NJ',
             'bussiness_and_company_name' => 'Business',
             'family_gotra' => 'shekh',

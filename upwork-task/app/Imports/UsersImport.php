@@ -19,20 +19,21 @@ class UsersImport implements ToModel,WithHeadingRow
     {
 
 
-        $birth_date =  $row['birth_date'];
+        $birth_date =  $row['day'];
         $parsed = Carbon::createFromFormat('d/m/Y', $birth_date)->format('Y');
 
 
         return new User([
-            "reg_no" => $row['reg_no'],
-            "email" => $row['reg_no'],
+            "reg_no" => $row['id'],
+            "email" => $row['id'],
             "name" => $row['name'],
             "gender" => $row['gender'],
-            "marital_status" => $row['marital_status'],
-            "mangalik_status" => $row['mangalik_status'], 
-            "birth_date" => $row['birth_date'],
-            "image_file" => $row['image_file'],
+            "marital_status" => $row['status'],
+            "mangalik_status" => $row['managl'], 
+            "birth_date" => $row['day'],
+            "image_file" => $row['image'],
             "password" => $row['password'],
+            "state" => $row['state'],
 
 
 
@@ -59,7 +60,7 @@ class UsersImport implements ToModel,WithHeadingRow
             'weight' => $row['weight'],
             'smoker' => $row['smoker'],
             'relation' => $row['relation'],
-            'number' => $row['number'],
+            'rnumber' => $row['rnumber'],
             'bussiness_and_company_name' => $row['bussiness_and_company_name'],
             'family_gotra' => $row['family_gotra'],
             'working_city' => $row['working_city'],
