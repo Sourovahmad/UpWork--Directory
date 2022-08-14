@@ -43,7 +43,7 @@
 
                 <div class="card-body pb-0">
 
-                  <table class="table table-borderless table-responsive">
+                  <table class="table table-borderless table-responsive" id="users_table">
                     <thead>
                       <tr>
                         <th scope="col">Name</th>
@@ -921,6 +921,13 @@
 
   <script>
      $(document).ready(function(){
+
+
+
+    $('#users_table').DataTable();
+
+
+
 
       const all_users = @json($users);
 

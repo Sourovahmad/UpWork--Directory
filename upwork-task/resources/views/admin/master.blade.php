@@ -23,6 +23,9 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
 
+
+  <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -116,6 +119,7 @@
   <script src="assets/js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   @yield('script')
 
 

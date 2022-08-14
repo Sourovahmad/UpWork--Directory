@@ -104,7 +104,6 @@ class UserController extends Controller
 
         }else{
 
-            
             if(User::where('id', '!=', $user->id)->
                 where('reg_no', $request->reg_no)->exists()){
                 $user->reg_no = $prev_reg;
