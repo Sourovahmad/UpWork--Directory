@@ -25,9 +25,13 @@ class indexController extends Controller
         }
         $users = null;
         if($current_user->gender == 'Boy'){
-            $users = User::where('gender', 'Girl')->get();
+            $users = User::
+            where('id', '!=', 1)->
+            where('gender', 'Girl')->get();
         }else{
-            $users = User::where('gender', 'Boy')->get();
+            $users = User::
+            where('id', '!=', 1)->
+            where('gender', 'Boy')->get();
         }
         $search_mode = false;
         return view('users.index',[
