@@ -51,6 +51,7 @@ class indexController extends Controller
        $mangalik_data = null;
        $born_data = null;
        $state_data = null;
+       $marital_status_data = null;
 
        
 
@@ -128,6 +129,16 @@ class indexController extends Controller
         }
 
 
+              
+       if(!is_null($request->marital_status)){
+            $marital_status_data = User::
+            where('id', '!=', 1)->
+            where('gender', $gender)
+            ->where('marital_status', $request->marital_status)->get();
+
+        }
+
+
 
 
 
@@ -161,6 +172,14 @@ class indexController extends Controller
             array_push($mergedArray, $single_state);
          }
     }
+
+    if(!is_null($marital_status_data)){
+        foreach ($marital_status_data as $single_marital) {
+            array_push($mergedArray, $single_marital);
+         }
+
+    }
+
 
     $users_uniq = array_unique($mergedArray);
     $search_mode = true;

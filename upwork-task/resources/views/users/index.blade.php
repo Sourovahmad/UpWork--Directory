@@ -133,17 +133,6 @@
                                             </button> <span class="name mt-3">{{ $user->name }}</span> 
                                             
                                       
-                                          @if($search_mode == false)
-                                          <div class="text mt-3"> <span>{{ $user->name }} Pena is a {{ $user->designation }} of  {{ $user->bussiness_and_company_name }}<br><br> Located At {{ $user->address }} </span> </div>
-
-                                          <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
-
-                                            <a href="{{ $user->facebook }}"><span class="m-2 p-2"><i class="fa fa-facebook-f"></i></span> </a>
-                                             <a href="{{ $user->insta }}"><span class="m-2 p-2"><i class="fa fa-instagram"></i></span> </a>
-                                            </div>
-                                          @endif
-
-                                     
 
                                        </div>
                                     </div>
@@ -290,6 +279,20 @@
 
 
 
+                                               
+                                <div class="mb-2">
+                                    <label for="marital_status" class="form-label">Marital Status</label>
+                                    <select class="form-control" id="marital_status" name="marital_status">
+                                        <option value="">Select </option>
+                                        <option value="Unmarried">Unmarried</option>
+                                        <option value="Divorcee">Divorcee</option>
+                                        <option value="Widow">Widow</option>
+                                        <option value="Widower">Widower</option>
+                                      </select>
+                                </div>
+
+
+
 
                                 <div class="text-center m-2">
                                     <button class="btn btn-outline-success card-link btn-sm" type="submit">Apply</button>
@@ -323,7 +326,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                   </button>
@@ -357,7 +360,7 @@
                     <input type="text" name="user_id" value="{{ auth()->user()->id }}" hidden required>
                     
                     <div class="form-group">
-                        <label for="password">  Password </label>
+                        <label for="password"> New Password </label>
                         <input type="text" class="form-control" name="password"  id="password" required>
                     </div>
                  </div>

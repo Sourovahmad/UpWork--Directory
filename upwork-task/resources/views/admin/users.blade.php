@@ -713,8 +713,8 @@
                       <div class="mb-3">
 
                         <div class="form-group">
-                            <label for="edit_number">Number</label>
-                            <input type="text" class="form-control" name="number"  id="edit_number" >
+                            <label for="edit_number">RNumber</label>
+                            <input type="text" class="form-control" name="rnumber"  id="edit_number" >
                         </div>
                     
                       </div>
