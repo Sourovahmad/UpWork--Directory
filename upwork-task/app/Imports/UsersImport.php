@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -16,6 +17,12 @@ class UsersImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
+
+
+        $birth_date =  $row['birth_date'];
+        $parsed = Carbon::createFromFormat('d/m/Y', $birth_date)->format('Y');
+
+
         return new User([
             "reg_no" => $row['reg_no'],
             "email" => $row['reg_no'],
@@ -40,7 +47,7 @@ class UsersImport implements ToModel,WithHeadingRow
             'mother_name' => $row['mother_name'],
             'mother_occuption' => $row['mother_occuption'],
             'month' => $row['month'],
-            'year' => $row['year'],
+            'year' => $parsed,
             'birth_city' => $row['birth_city'],
             'height' => $row['height'],
             'complexion' => $row['complexion'],
