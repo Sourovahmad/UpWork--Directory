@@ -98,9 +98,26 @@ class UserController extends Controller
 
         $user->update($request->except('user_id'));
 
-    
+        if($prev_reg == $request->reg_no){
 
-        return redirect()->route('admin_home')->withSuccess("User has been updated");
+            return redirect()->route('admin_home')->withSuccess("User has been updated");
+
+        }else{
+
+            
+            if(User::where('id', '!=', $user->id)->
+                where('reg_no', $request->reg_no)->exists()){
+                $user->reg_no = $prev_reg;
+                $user->save();
+                return redirect()->route('admin_home')->withErrors("Reg No Already Used");
+
+            }else{
+                return redirect()->route('admin_home')->withSuccess("User has been updated");
+
+            }
+        }
+
+     
 
     }
 
