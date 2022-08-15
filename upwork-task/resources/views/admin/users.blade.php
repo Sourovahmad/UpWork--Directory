@@ -8,7 +8,7 @@
       <div>
         <button type="button" class="btn btn-sm btn-success btn-lg me-4 ps-3 pe-3" data-bs-toggle="modal" data-bs-target="#add_modal"> Add csv </button>
         <button type="button" class="btn btn-sm btn-success btn-lg me-4 ps-3 pe-3" data-bs-toggle="modal" data-bs-target="#image_modal"> upload Image </button>
-      <button type="button" class="btn btn-sm btn-info btn-lg me-4 ps-3 pe-3" data-bs-toggle="modal" data-bs-target="#setting_modal"><span class="iconify" data-icon="icon-park:setting" style="font-size:22px"></span>  </button>
+      <button type="button" class="btn btn-sm btn-info btn-lg me-4 ps-3 pe-3" data-bs-toggle="modal" data-bs-target="#setting_modal"> <iconify-icon icon="icon-park:setting" style="color: red; font-size:22px"></iconify-icon>  </button>
 
       </div>
       
@@ -55,6 +55,7 @@
                         <th scope="col">State</th>
                         <th scope="col">birth Year</th>
                         <th scope="col">image</th>
+                        <th scope="col">Published</th>
                         <th scope="col">Action</th>
 
                       </tr>
@@ -71,8 +72,19 @@
                         <th scope="row"> {{ $user->state }}</th>
                         <th scope="row"> {{ $user->year }}</th>
                         <th scope="row"> <img src="{{ url('/images/'.$user->image_file) }}" alt="" style="height: 35px; width:40px"> </th>
-                   
+
+                        <td scope="row"> <span class="text-center">
+
+                          @if($user->publish_status == true)
+                          <iconify-icon icon="dashicons:yes-alt" style="color: green; font-size:30px"></iconify-icon> 
+                          @else
+                          <iconify-icon icon="entypo:circle-with-cross" style="color: red; font-size:30px"></iconify-icon>
+                          @endif
+                        
+                        
+                        </span> </td>
                         <td>
+                  
                           <button type="button" class="btn btn-sm btn-outline-success editButton" data-id="{{ $user->id }}"> edit </button>
                           <button type="button" class="btn btn-sm btn-outline-danger deleteButton" data-id="{{ $user->id }}">delete </button>
 
@@ -283,6 +295,26 @@
                     
                       </div>
                     </div>
+
+
+
+
+                    <div class="col-md-6 col-sm-12">
+                      <div class="mb-3">
+
+                        <div class="form-group">
+                            <label for="publish_status">publish Status</label>
+
+                            <select name="publish_status" id="edit_publish_status" class="form-select">
+                                <option value="1" id="publish_status_true">Publish</option>
+                                <option value="0" id="publish_status_false">UnPublish</option>
+                            </select>
+                        </div>
+                    
+                      </div>
+                    </div>
+
+
 
 
 
@@ -987,6 +1019,12 @@
         elementFinder('edit_designation').value = single.designation;
         elementFinder('edit_password').value = single.pss_forsetting;
         elementFinder('edit_imageFile').value = single.image_file;
+
+        if(single.publish_status == true){
+          elementFinder('publish_status_true').setAttribute('selected',true);
+        }else{
+          elementFinder('publish_status_false').setAttribute('selected',true);
+        }
 
 
 

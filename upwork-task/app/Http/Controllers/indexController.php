@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\setting;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 
 class indexController extends Controller
@@ -27,10 +25,12 @@ class indexController extends Controller
         if($current_user->gender == 'Boy'){
             $users = User::
             where('id', '!=', 1)->
+            where('publish_status', true)->
             where('gender', 'Girl')->get();
         }else{
             $users = User::
             where('id', '!=', 1)->
+            where('publish_status', true)->
             where('gender', 'Boy')->get();
         }
         $search_mode = false;
@@ -61,11 +61,13 @@ class indexController extends Controller
             if($request->upload_time == 'this_week'){
                 $upload_times_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('created_at', '>', now()->subDays(7)->endOfDay())->get();
             }elseif($request->upload_time == 'all'){
                 $upload_times_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)->get();
             }
        }
@@ -75,17 +77,20 @@ class indexController extends Controller
             if($request->mangalik == 'non_mangalik'){
                 $mangalik_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('mangalik_status', 'Non Mangalik')->get();
             } elseif($request->mangalik == 'anshik'){
                 $mangalik_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('mangalik_status', 'Anshik Mangalik')->get();
 
             } elseif($request->mangalik == 'dont_know'){
                 $mangalik_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('mangalik_status', "Don't Know Mangal Status")->get();
             }
@@ -98,12 +103,14 @@ class indexController extends Controller
             if($request->born == 'before_1985'){
                 $born_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('year', '<=', '1985')->get();
 
             }elseif($request->born == '1985_1995'){
                 $born_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('year', '>=', '1985')
                 ->where('year', '<=', '1995')
@@ -112,6 +119,7 @@ class indexController extends Controller
             }elseif($request->born == 'after_1995'){
                 $born_data = User::
                 where('id', '!=', 1)->
+                where('publish_status', true)->
                 where('gender', $gender)
                 ->where('year', '>=', '1995')->get();
             }
@@ -124,6 +132,7 @@ class indexController extends Controller
        if(!is_null($request->state)){
             $state_data = User::
             where('id', '!=', 1)->
+            where('publish_status', true)->
             where('gender', $gender)
             ->where('state', $request->state)->get();
         }
@@ -133,6 +142,7 @@ class indexController extends Controller
        if(!is_null($request->marital_status)){
             $marital_status_data = User::
             where('id', '!=', 1)->
+            where('publish_status', true)->
             where('gender', $gender)
             ->where('marital_status', $request->marital_status)->get();
 
@@ -183,6 +193,10 @@ class indexController extends Controller
 
     $users_uniq = array_unique($mergedArray);
     $search_mode = true;
+
+    // return $users_uniq;
+
+
        // pass to index as $users
        return view('users.index',[
         'users' => $users_uniq,
@@ -290,8 +304,16 @@ class indexController extends Controller
             
             if($user)
             {
-                Auth::login($user);
-                return redirect()->route('home');
+                if($user->publish_status == true){
+                    Auth::login($user);
+                    return redirect()->route('home');
+                }else{
+                    return redirect()->route('login')->withErrors('You Are Not published Yet. Contact Admin');
+                }
+
+
+
+
             }else{
                 return redirect()->route('login')->withErrors('Credentials Does Not Match');
             }

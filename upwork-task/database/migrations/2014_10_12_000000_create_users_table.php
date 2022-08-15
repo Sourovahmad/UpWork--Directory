@@ -75,7 +75,7 @@ class CreateUsersTable extends Migration
             $table->string('brothers');
             $table->string('sisters');
             $table->string('designation');
-
+            $table->boolean('publish_status')->default(true);
 
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

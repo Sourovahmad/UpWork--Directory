@@ -564,7 +564,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1200px) {
   #main, #footer {
-    margin-left: 38px;
+    /* margin-left: 38px; */
   }
 }
 @media (max-width: 1199px) {
@@ -831,6 +831,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .dashboard .top-selling .table tbody td {
   vertical-align: middle;
+  text-align: center;
 }
 .dashboard .top-selling img {
   border-radius: 5px;
